@@ -1,18 +1,23 @@
 // #region 'Importing'
+
 import { useEffect, useState } from 'react'
 import './styles.css'
+
 // #endregion
 
 // #region 'Objectives of App'
+
   // Building a game:
   // Break it down into small comments
   // Figure out what state is needed <<<<
   // Figure out what state can be derived <<<<<
   // Create any functions needed to update state
   // Put stuff on the screen depending on state and derived state
+
 // #endregion
 
 // #region 'Global Varibales to use state helpers'
+
 const letters = 'abcdefghijklmnopqrstuvwxyz'
 
 const words = [
@@ -74,16 +79,19 @@ function getRandomWord() {
   return words[randomIndex]
 
 }
+
 // #endregion
 
 export default function App() {
 
   // #region 'State Object'
+
   // there's a word we need to guess // TODO: Make it random
   const [word, setWord] = useState(getRandomWord())
 
   // we need to keep track of guesses
   const [guesses, setGuesses] = useState([])
+
   // #endregion
 
   // #region 'Derived State, helper functions'
@@ -112,8 +120,8 @@ export default function App() {
   // #endregion
 
   // #region 'UseEffect on key event listener new concept'
-  // Essential:
 
+  // Essential:
   useEffect(() => {
 
     if (lost || won) return
@@ -138,16 +146,20 @@ export default function App() {
 
     return () => window.removeEventListener('keydown', listener)
   }, [guesses, lost, won])
+
   // #endregion
 
   // #region 'Additional extra features to have'
+
     // Nice to have:
     // when the game ends, we can restart it by pressing a button
     // a drawing of a hangman is shown
     // when losing, characters not guessed should be displayed in red in the word
-  // #endregion
+  
+    // #endregion
 
   // #region 'App html return'
+
   return (
 
     <div className="App">
@@ -184,6 +196,7 @@ export default function App() {
       ) : null}
     </div>
   )
+  
   // #endregion
 
 }
